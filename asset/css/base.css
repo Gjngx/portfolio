@@ -1,0 +1,327 @@
+/* =========================
+   Font Face Declarations
+   ========================= */
+
+@font-face {
+  font-family: 'AlbertSans';
+  src: url('/asset/fonts/AlbertSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlbertSans';
+  src: url('/asset/fonts/AlbertSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlbertSans';
+  src: url('/asset/fonts/AlbertSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AlbertSans';
+  src: url('/asset/fonts/AlbertSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/asset/fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/asset/fonts/Poppins-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/asset/fonts/Poppins-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/asset/fonts/Poppins-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --page-padding: max((100vw - var(--container--max-width)) / 2, 0px);
+}
+
+html {
+  --fs-global: 0.5787037037vw;
+  /* 1728px */
+
+  font-size: var(--fs-global);
+  height: auto;
+  min-height: -webkit-fill-available;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: none;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+  background-attachment: scroll!important;
+}
+
+@media only screen and (min-width: 1728px) {
+  html {
+    --fs-global: 10px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  html {
+    --fs-global: 1.0090817356vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  html {
+    --fs-global: 2.6666666667vw;
+  }
+}
+
+body,
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-primary), Arial, sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main,
+.main {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin-block: 0;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--padding);
+  position: relative;
+  z-index: 2;
+}
+
+.container.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--column), minmax(0, var(--one-column)));
+  gap: var(--column-gap);
+  padding-inline: 0rem;
+  margin-inline: auto;
+  max-width: none;
+  align-content: start;
+}
+
+.container.grid.full-h {
+  height: 100vh;
+  align-content: initial;
+
+  @media screen and (max-width: 991px) {
+    height: auto;
+  }
+}
+
+.container.grid,
+.full-width {
+  --padding-inline: calc(var(--padding) - var(--column-gap));
+  --content-max-width: calc(var(--max-width) - (var(--padding) * 2));
+
+  padding: 0;
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr) [content-start] repeat(var(--column), minmax(0, calc(min(100% - (var(--padding-inline) * 2) - (var(--column-gap) * (var(--column) - 1)),
+            var(--content-max-width) - (var(--column-gap) * (var(--column) - 1))) / var(--column)))) [content-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+  gap: 0 var(--column-gap);
+}
+
+/* .container.grid> :not(.full-width),
+.full-width> :not(.full-width) {
+  grid-column: content;
+} */
+
+.container.grid>.full-width,
+.container.grid>.full-width-wrap {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: minmax(0px, 1fr);
+}
+
+/*Heading*/
+.heading {
+  font-family: var(--font-primary), Arial, sans-seri;
+  margin-block: 0;
+}
+
+.h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 991px) {
+    font-size: 5.2rem;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 3.2rem;
+  }
+}
+
+/* Text */
+.txt {
+  font-family: var(--font-secondary), Arial, sans-seri;
+  margin-block: 0;
+}
+.txt-highlight {
+  color: var(--color-text-highlight);
+}
+.fs-12 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 1.2rem;
+  }
+}
+
+.fs-14 {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 1.2rem;
+  }
+}
+
+.fs-16 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 1.4rem;
+  }
+}
+
+.fs-18 {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 1.6rem;
+  }
+}
+
+.fs-20 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 1.8rem;
+  }
+}
+
+.fs-24 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 2rem;
+  }
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fw-semi {
+  font-weight: 600;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+/* Image */
+.img-df {
+  width: 100%;
+  object-fit: cover;
+}
+
+.img-df.img-fill {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}
+
+.img-df.img-h{
+  max-width: none;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+}
+.btn {
+  display: block;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-sm);
+  border: var(--1px) solid transparent;
+  transition: all 0.4s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--color-text-primary);
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+.anim-marquee {
+  animation: marquee 30s linear infinite;
+}

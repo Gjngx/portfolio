@@ -1,15 +1,270 @@
 <!DOCTYPE html>
-<htm lang="en">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Portfolio Giang Dang</title>
   <link rel="stylesheet" href="/asset/css/variables.css">
   <link rel="stylesheet" href="/asset/css/base.css">
-  <link rel="stylesheet" href="/asset/css/global.css">
-  <script src="/asset/js/global.js"></script>
+  <link rel="stylesheet" href="/asset/css/keyframes.css">
+  <link rel="stylesheet" href="/asset/css/style.css">
+  <link rel="icon" href="/asset/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-  <h1>Hello World</h1>
+  <div id="page-pfolio" class="pfolio">
+    <div class="page-mask-layer"></div>
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <div class="header-content">
+            <div class="header-logo">
+              <a class="logo-link" href="/" rel="home">
+                <img class="img-df img-fill" src="/asset/images/logo.png" alt="Portfolio Giang Dang">
+              </a>
+            </div>
+          </div>
+          <nav class="header-nav">
+            <div class="header-nav-inner">
+              <div class="main-nav">
+                <div class="nav-inner">
+                  <div class="menu-item">
+                    <a class="menu-link" href="#">
+                      <p class="txt fs-16 fw-semi">About</p>
+                    </a>
+                  </div>
+                  <div class="menu-item">
+                    <a class="menu-link" href="#">
+                      <p class="txt fs-16 fw-semi">Expertise</p>
+                    </a>
+                  </div>
+                  <div class="menu-item">
+                    <a class="menu-link" href="#">
+                      <p class="txt fs-16 fw-semi">Projects</p>
+                    </a>
+                  </div>
+                  <div class="menu-item">
+                    <a class="menu-link" href="#">
+                      <p class="txt fs-16 fw-semi">Contact</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="separator-line-h"></div>
+              <div class="header-button">
+                <a class="btn btn-primary" href="#">
+                  <p class="txt fs-16 fw-medium">Resume</p>
+                </a>
+              </div>
+            </div>
+            <div class="header-nav-mobile">
+                <button class="header-toggle" aria-label="Main Menu">
+                  <div class="header-nav-mobile-ic">
+                  <svg width="100%" viewBox="0 0 100 100">
+                    <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="line line2" d="M 20,50 H 80" />
+                    <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                  </svg>
+                  </div>
+                </button>
+            </div>
+          </nav>
+        </div>
+        <div class="header-act-mobile">
+          <div class="header-act-mobile-wrap">
+            <div class="header-act-mobile-inner">
+              <div class="header-act-mobile-item">
+                <a class="header-act-mobile-link" href="#">
+                  <p class="txt fs-16 fw-semi">About</p>
+                </a>
+              </div>
+              <div class="header-act-mobile-item">
+                <a class="header-act-mobile-link" href="#">
+                  <p class="txt fs-16 fw-semi">Expertise</p>
+                </a>
+              </div>
+              <div class="header-act-mobile-item">
+                <a class="header-act-mobile-link" href="#">
+                  <p class="txt fs-16 fw-semi">Projects</p>
+                </a>
+              </div>
+              <div class="header-act-mobile-item">
+                <a class="header-act-mobile-link" href="#">
+                  <p class="txt fs-16 fw-semi">Contact</p>
+                </a>
+              </div>
+            </div>
+            <div class="header-act-mobile-button">
+              <a class="btn btn-primary" href="#">
+                <p class="txt fs-16 fw-medium">Resume</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="separator-line-w"></div>
+    </header>
+    <main id="primary" class="main-inner" data-namespace="portfolio">
+      <portfolio-hero>
+        <div class="pfolio-hero">
+          <div class="container grid full-h">
+            <div class="pfolio-hero-text">
+              <div class="pfolio-hero-text-wrap">
+                <div class="pfolio-hero-tag">
+                  <div class="pfolio-hero-tag-icon">
+                  </div>
+                  <div class="pfolio-hero-tag-icon-primary">
+                  </div>
+                  <div class="pfolio-hero-tag-text">
+                    <p class="txt fs-16 fw-semi">Available for new projects</p>
+                  </div>
+                </div>
+                <div class="pfolio-hero-title">
+                  <h1 class="heading h1">
+                    Hi, I'm <span class="txt-highlight">Giang Dang</span><br>
+                    I build fast, scalable
+                    <span class="txt-highlight">WordPress & Shopify</span> websites
+                  </h1>
+                </div>
+                <div class="pfolio-hero-description">
+                  <p class="txt fs-18">I'm a Web Developer with hands-on experience in custom WordPress
+                    themes, plugins,
+                    WooCommerce optimization, and Shopify theme development.
+                    <br>
+                    I've worked on 10+ real projects, improved page load speed by up to 50%, and enjoy
+                    building clean, maintainable code from Figma to production.
+                  </p>
+                </div>
+              </div>
+              <div class="pfolio-hero-tech-stack">
+                <div class="pfolio-hero-tech-stack-label">
+                  <p class="txt fs-16 fw-semi">Core Expertise</p>
+                </div>
+                <div class="pfolio-hero-tech-stack-list">
+                  <div role="list" class="pfolio-hero-tech-stack-wrap">
+                    <div role="listitem" class="pfolio-hero-tech-stack-item">
+                      <div class="pfolio-hero-tech-stack-title">
+                        <p class="txt fs-14 fw-medium">WordPress Custom Theme & Plugin</p>
+                      </div>
+                    </div>
+                    <div role="listitem" class="pfolio-hero-tech-stack-item">
+                      <div class="pfolio-hero-tech-stack-title">
+                        <p class="txt fs-14 fw-medium">WooCommerce Optimization</p>
+                      </div>
+                    </div>
+                    <div role="listitem" class="pfolio-hero-tech-stack-item">
+                      <div class="pfolio-hero-tech-stack-title">
+                        <p class="txt fs-14 fw-medium">Shopify Custom Theme</p>
+                      </div>
+                    </div>
+                    <div role="listitem" class="pfolio-hero-tech-stack-item">
+                      <div class="pfolio-hero-tech-stack-title">
+                        <p class="txt fs-14 fw-medium">PHP, JavaScript, MySQL</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pfolio-hero-tech-stack-dots">
+                  <div class="pfolio-hero-tech-stack-dot"></div>
+                </div>
+              </div>
+              <div class="pfolio-hero-action">
+                <a class="btn btn-primary" href="#">
+                  <p class="txt fs-16 fw-medium">Contact Me</p>
+                </a>
+                <a class="btn btn-outline" href="#">
+                  <p class="txt fs-16 fw-medium">Download CV</p>
+                </a>
+              </div>
+              <div class="pfolio-hero-marquee">
+                <div class="pfolio-hero-marquee-label">
+                  <p class="txt fs-16 fw-semi">Technologies I Work With</p>
+                </div>
+                <div class="pfolio-hero-marquee-list">
+                  <div class="pfolio-hero-marquee-inner">
+                    <div data-marquee="item" class="pfolio-hero-marquee-wrap">
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/wordpress.svg" alt="WordPress">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/woocommerce.svg" alt="WooCommerce">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/divi.svg" alt="Shopify">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/elementor.svg" alt="Elementor">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/wp-rocket.svg" alt="WP Rocket">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/yoast.svg" alt="Yoast">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/shopify.svg" alt="Shopify">
+                        </div>
+                      </div>
+                      <div class="pfolio-hero-marquee-item">
+                        <div class="pfolio-hero-marquee-item-image">
+                          <img class="img-df img-h" src="/asset/images/webflow.svg" alt="Webflow">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pfolio-hero-thumb">
+              <div class="pfolio-hero-thumb-image">
+                <img class="img-df img-fill" src="/asset/images/thumb-hero.png" alt="Portfolio Giang Dang">
+              </div>
+            </div>
+            <div class="pfolio-hero-scroll-down">
+              <div class="pfolio-hero-scroll-down-text">
+                <p class="txt fs-16 fw-semi">Scroll</p>
+              </div>
+              <div class="pfolio-hero-scroll-down-inner">
+                <div class="pfolio-hero-scroll-down-icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </portfolio-hero>
+    </main>
+  </div>
+  <!-- Vendor -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js" defer></script>
+  <script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
+
+  <!-- SplitType -->
+  <script type="module">
+    import SplitType from 'https://cdn.jsdelivr.net/npm/split-type@0.3.4/+esm';
+    window.SplitType = SplitType;
+  </script>
+
+  <!-- Your code -->
+  <script src="/asset/js/main.js" defer></script>
+  <script src="/asset/js/animation.js" defer></script>
+  <script src="/asset/js/embla.js" defer></script>
 </body>
-</htm>
+
+</html>

@@ -1,0 +1,55 @@
+ /* =========================
+   Global CSS Variables
+   Purpose: Define base colors for the whole site
+   ========================= */
+
+   :root {
+    /* Font families */
+    --font-primary: 'AlbertSans', sans-serif;
+    --font-secondary: 'Poppins', sans-serif;
+
+    /* Background colors */
+    --color-bg-primary: #101922;
+
+    /* Text colors */
+    --color-text: #94a3b8;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cbd5e1;
+    --color-text-highlight: #137fec;
+  
+    /* Highlight / Accent */
+    --color-primary: #137fec;
+    --color-primary-hover: rgb(19 127 236 / 0.9);
+  
+    /* Border & divider */
+    --color-border: #233648;
+    --color-border-hover: #137fec;
+    --1px: round(max(1px, .1rem), 1px);
+
+    /* Border radius */
+    --border-radius-none: 0;
+    --border-radius-sm: 0.8rem;
+    --border-radius-md: 1.6rem;
+    --border-radius-lg: 2.4rem;
+    --border-radius-circle: 99rem;
+
+    /* Container */
+    --max-width: 1728px;
+    --width: min(100vw, var(--max-width));
+    --padding: 22rem;
+    --column: 18;
+    --column-gap: 1.2rem;
+    --one-column: calc((var(--width) - ((var(--column) - 1) * var(--column-gap)) - (var(--padding) * 2)) / var(--column));
+
+    /* Breakpoints */
+    @media screen and (max-width: 991px) {
+      --padding: 4rem;
+      --column: 8;
+    }
+    @media screen and (max-width: 767px) {
+      --padding: 2rem;
+      --column: 4;
+      --column-gap: 0.8rem;
+    }
+
+  }
