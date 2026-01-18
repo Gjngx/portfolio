@@ -521,6 +521,7 @@ const script = () => {
                         ...Array.from(this.querySelectorAll('.pfolio-hero-tech-stack-item')).map(el => {
                             return new FadeIn({ el, allowMobile: true })
                         }),
+                        new FadeIn({ el: this.querySelector('.pfolio-hero-tech-stack-dots'), allowMobile: true }),
                         ...Array.from(this.querySelectorAll('.pfolio-hero-action .btn')).map(el => {
                             return new FadeIn({ el, allowMobile: true })
                         }),
@@ -528,7 +529,7 @@ const script = () => {
                         ...Array.from(this.querySelectorAll('.pfolio-hero-marquee-item')).map(el => {
                             return new FadeIn({ el, allowMobile: true })
                         }),
-                        new FadeIn({ el: this.querySelector('.pfolio-hero-scroll-down'), allowMobile: false }),
+                        new FadeIn({ el: this.querySelector('.pfolio-hero-scroll-down'), allowMobile: false })
                     ]
                 })
             }
