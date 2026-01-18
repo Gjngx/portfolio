@@ -30,6 +30,7 @@
 .header.on-scroll{
     top: 0;
 }
+.header.on-open-nav .separator-line-w,
 .header.on-scroll .separator-line-w{
     background-color: transparent;
 }
