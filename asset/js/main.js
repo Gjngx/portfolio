@@ -392,7 +392,7 @@ const script = () => {
             this.isOpen = false;
             const $mobileMenu = $(this.el).find('.header-act-mobile');
             $mobileMenu.removeClass('active');
-            // Chờ transition đóng xong mới đổi overflow và bật Lenis để tránh giật
+            $(this.el).find('.header-toggle').removeClass('active');
             const duration = 400;
             setTimeout(() => {
                 if (!$mobileMenu.hasClass('active')) {
@@ -400,7 +400,6 @@ const script = () => {
                     document.body.style.overflow = '';
                     document.body.style.paddingRight = '';
                     $(this.el).removeClass('on-open-nav');
-                    $(this.el).find('.header-toggle').removeClass('active');
                     smoothScroll.lenis.start();
                 }
             }, duration);
@@ -502,7 +501,6 @@ const script = () => {
                 };
             }
             setup() {
-                console.log('setup');
                 new Marquee($(this).find('.pfolio-hero-marquee-inner'), 30).setup();
                 if (viewport.w <= 767) {
                     $(this).find('.pfolio-hero-tech-stack-list').addClass('embla__viewport');

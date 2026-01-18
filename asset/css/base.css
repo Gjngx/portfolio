@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'AlbertSans';
-  src: url('/portfolio/asset/fonts/AlbertSans-Regular.woff2') format('woff2');
+  src: url('../fonts/AlbertSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'AlbertSans';
-  src: url('/portfolio/asset/fonts/AlbertSans-Medium.woff2') format('woff2');
+  src: url('../fonts/AlbertSans-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: 'AlbertSans';
-  src: url('/portfolio/asset/fonts/AlbertSans-SemiBold.woff2') format('woff2');
+  src: url('../fonts/AlbertSans-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
   font-family: 'AlbertSans';
-  src: url('/portfolio/asset/fonts/AlbertSans-Bold.woff2') format('woff2');
+  src: url('../fonts/AlbertSans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/portfolio/asset/fonts/Poppins-Regular.woff2') format('woff2');
+  src: url('../fonts/Poppins-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -44,7 +44,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/portfolio/asset/fonts/Poppins-Medium.woff2') format('woff2');
+  src: url('../fonts/Poppins-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -52,7 +52,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/portfolio/asset/fonts/Poppins-SemiBold.woff2') format('woff2');
+  src: url('../fonts/Poppins-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -60,7 +60,7 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/portfolio/asset/fonts/Poppins-Bold.woff2') format('woff2');
+  src: url('../fonts/Poppins-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -265,6 +265,15 @@ p {
   }
 }
 
+.fs-42 {
+  font-size: 4.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 3.2rem;
+  }
+}
+
 .fw-bold {
   font-weight: 700;
 }
@@ -296,7 +305,9 @@ p {
   height: 100%;
 }
 .btn {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem 2rem;
   border-radius: var(--border-radius-sm);
   border: var(--1px) solid transparent;
