@@ -502,6 +502,7 @@ const script = () => {
                 };
             }
             setup() {
+                console.log('setup');
                 new Marquee($(this).find('.pfolio-hero-marquee-inner'), 30).setup();
                 if (viewport.w <= 767) {
                     $(this).find('.pfolio-hero-tech-stack-list').addClass('embla__viewport');
