@@ -187,12 +187,14 @@
 .separator-line-h {
     width: var(--1px);
     background-color: var(--color-border);
+    transition: background-color 0.4s ease;
 }
 
 .separator-line-w {
     width: 100%;
     height: var(--1px);
     background-color: var(--color-border);
+    transition: background-color 0.4s ease;
 }
 
 .page-mask-layer {
