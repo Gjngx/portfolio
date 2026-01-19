@@ -5,8 +5,8 @@
 
    :root {
     /* Font families */
-    --font-primary: 'AlbertSans', sans-serif;
-    --font-secondary: 'Poppins', sans-serif;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'AlbertSans', sans-serif;
 
     /* Background colors */
     --color-bg-primary: #101922;

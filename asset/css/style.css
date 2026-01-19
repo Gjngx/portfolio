@@ -17,8 +17,9 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: var(--color-bg-primary);
+    background: transparent;
     z-index: 1;
+    transition: background-color 0.4s ease;
 }
 .header.on-hide{
     transform: translateY(-100%);
@@ -29,6 +30,9 @@
 }
 .header.on-scroll{
     top: 0;
+}
+.header.on-scroll .header-bg{
+    background: var(--color-bg-primary);
 }
 .header.on-open-nav .separator-line-w,
 .header.on-scroll .separator-line-w{
@@ -576,6 +580,124 @@
     border-radius: var(--border-radius-circle);
     margin-top: 0.4rem;
     animation: scrollDown 1.5s infinite;
+}
+
+.pfolio-about{
+    padding-block: 16rem;
+    background-color: var(--color-bg-primary);
+}
+.pfolio-about-header{
+    grid-column: 2 / 12;
+    grid-row: 1 / 1;
+    justify-items: start;
+    margin-bottom: 4rem;
+}
+.pfolio-about-lable{
+    color: var(--color-text-highlight);
+}
+.pfolio-about-title{
+    color: var(--color-text-primary);
+}
+.pfolio-about-thumb{
+    grid-column: 2 / 8;
+    grid-row: 2 / 2;
+}
+.pfolio-about-thumb-image{
+    width: 42rem;
+    height: 56rem;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+.pfolio-about-content{
+    grid-column: 10 / -2;
+    grid-row: 2 / 2;
+}
+.pfolio-about-skills{
+    margin-block-start: 6rem;
+    grid-column: 2 / -2;
+    grid-row: 3 / 3;
+}
+.pfolio-about-content-title{
+    color: var(--color-text-primary);
+    margin-bottom: 2.4rem;
+}
+.pfolio-about-content-description{
+    color: var(--color-text);
+    margin-bottom: 2.4rem;
+}
+.pfolio-about-content-list{
+    width: 100%;
+    margin-block-start: 2.4rem;
+}
+.pfolio-about-content-list-wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+}
+.pfolio-about-content-item{
+    width: calc(100% / 3);
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+.pfolio-about-content-item-number{
+    color: var(--color-text-highlight);
+}
+.pfolio-about-content-item-title{
+    color: var(--color-text);
+}
+
+.pfolio-about-skills-list-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+.pfolio-about-skills-item{
+    width: calc(100% / 4);
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: var(--1px) solid transparent;
+    border-radius: var(--border-radius-md);
+    padding: 2.4rem 3.2rem;
+    background-color: #233648;
+    transition: border-color 0.4s ease;
+
+    &:hover {
+        border-color: var(--color-border-hover);
+    }
+}
+.pfolio-about-skills-lable{
+    color: var(--color-text-highlight);
+}
+.pfolio-about-skills-title{
+    color: var(--color-text-primary);
+    margin-bottom: 2.4rem;
+}
+.pfolio-about-skills-item-header{
+    margin-bottom: 1.2rem;
+}
+.pfolio-about-skills-item-title{
+    color: var(--color-text-primary);
+}
+.pfolio-about-skills-item-content-desc{
+    color: var(--color-text);
+    margin-bottom: 0.8rem;
+}
+.pfolio-about-skills-item-tag{
+    color: var(--color-text-highlight);
 }
 
 /* Responsive */

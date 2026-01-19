@@ -509,6 +509,12 @@ const script = () => {
                 }
             }
             animationReveal() {
+                this.tl = gsap.timeline({
+                    delay: .5,
+                    onStart: () => {
+                        this.querySelectorAll('[data-init-hidden]').forEach((el) => { el.removeAttribute('data-init-hidden') });
+                    },
+                })
                 new MasterTimeline({
                     triggerInit: this,
                     timeline: this.tl,
