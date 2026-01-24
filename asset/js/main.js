@@ -552,12 +552,12 @@ const script = () => {
                     delay: 3000,
                     stopOnInteraction: false,
                     stopOnMouseEnter: true
-                  });
+                });
                 this.emblaApi = EmblaCarousel(slidesInner, {
                     align: 'start',
                     containScroll: 'trimSnaps',
                     loop: true
-                  }, [autoplay]);
+                }, [autoplay]);
                 if (dotsNode && dotNodeTemplate) {
                     this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
                 }
@@ -566,6 +566,76 @@ const script = () => {
                 super.destroy();
             }
         },
+        'portfolio-about': class extends TriggerSetup {
+            constructor() {
+                super();
+                this.onTrigger = () => {
+                    this.setup();
+                    this.animationReveal();
+                    this.interact();
+                };
+            }
+            setup() {
+                if (viewport.w <= 767) {
+                    $(this).find('.pfolio-about-skills-list').addClass('embla__viewport');
+                    $(this).find('.pfolio-about-skills-list-wrap').addClass('embla__container');
+                    $(this).find('.pfolio-about-skills-item').addClass('embla__slide');
+                }
+            }
+            animationReveal() {
+                const descriptionTimeline = new MasterTimeline({
+                    allowMobile: true,
+                    tweenArr: Array.from(
+                        this.querySelectorAll('.pfolio-about-content-description .txt')
+                    ).map(el => {
+                        return new RevealText({
+                            el,
+                            color: '#94a3b8',
+                            allowMobile: true
+                        });
+                    })
+                });
+                new MasterTimeline({
+                    triggerInit: this,
+                    scrollTrigger: { trigger: $(this).find('.pfolio-about') },
+                    allowMobile: true,
+                    tweenArr: [
+                        new RevealText({ el: this.querySelector('.pfolio-about-lable .txt'), color: '#137fec', allowMobile: true, isHighlight: true, }),
+                        new RevealText({ el: this.querySelector('.pfolio-about-title .heading'), color: 'white', allowMobile: true }),
+                        new ScaleInset({ el: this.querySelector('.pfolio-about-thumb-image'), allowMobile: true }),
+                        new RevealText({ el: this.querySelector('.pfolio-about-content-title .heading'), color: 'white', allowMobile: true }),
+                        descriptionTimeline,
+                        new FadeIn({ el: this.querySelector('.separator-line-w'), allowMobile: true }),
+                        ...Array.from(this.querySelectorAll('.pfolio-about-content-item')).map(el => {
+                            return new FadeIn({ el, allowMobile: true })
+                        }),
+                        new RevealText({ el: this.querySelector('.pfolio-about-skills-lable .txt'), color: '#137fec', allowMobile: true, isHighlight: true, }),
+                        new RevealText({ el: this.querySelector('.pfolio-about-skills-title .heading'), color: 'white', allowMobile: true }),
+                        ...Array.from(this.querySelectorAll('.pfolio-about-skills-item')).map(el => {
+                            return new FadeIn({ el, allowMobile: true })
+                        }),
+                    ]
+                })
+            }
+            interact() {
+                if (viewport.w <= 767) {
+                    this.initSlider();
+                }
+            }
+            initSlider() {
+                const slidesInner = $(this).find('.pfolio-about-skills-list').get(0);
+                const dotsNode = $(this).find('.pfolio-about-skills-dots').get(0);
+                const dotNodeTemplate = $(this).find('.pfolio-about-skills-dot').get(0);
+                this.emblaApi = EmblaCarousel(slidesInner);
+                if (dotsNode && dotNodeTemplate) {
+                    this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
+                }
+            }
+            destroy() {
+                super.destroy();
+            }
+        },
+
     }
     class PageManager {
         constructor(page) {
