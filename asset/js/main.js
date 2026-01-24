@@ -635,7 +635,122 @@ const script = () => {
                 super.destroy();
             }
         },
+        'portfolio-expertise': class extends TriggerSetup {
+            constructor() {
+                super();
+                this.onTrigger = () => {
+                    this.setup();
+                    this.animationReveal();
+                    this.interact();
+                };
+            }
+            setup() {
+                if (viewport.w <= 767) {
+                    // $(this).find('.pfolio-about-skills-list').addClass('embla__viewport');
+                    // $(this).find('.pfolio-about-skills-list-wrap').addClass('embla__container');
+                    // $(this).find('.pfolio-about-skills-item').addClass('embla__slide');
+                }
+            }
+            animationReveal() {
 
+                new MasterTimeline({
+                    triggerInit: this,
+                    scrollTrigger: { trigger: $(this).find('.pfolio-expertise') },
+                    allowMobile: true,
+                    tweenArr: [
+
+                    ]
+                })
+            }
+            interact() {
+                if (viewport.w <= 767) {
+                    // this.initSlider();
+                }else{
+                    this.animateLine();
+                }
+            }
+            initSlider() {
+                // const slidesInner = $(this).find('.pfolio-about-skills-list').get(0);
+                // const dotsNode = $(this).find('.pfolio-about-skills-dots').get(0);
+                // const dotNodeTemplate = $(this).find('.pfolio-about-skills-dot').get(0);
+                // this.emblaApi = EmblaCarousel(slidesInner);
+                // if (dotsNode && dotNodeTemplate) {
+                //     this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
+                // }
+            }
+            animateLine() {
+                const $wrap = $(this);
+                const line = $wrap.find('.pfolio-expertise-line').get(0);
+                const lineScale = $wrap.find('.pfolio-expertise-line-scale').get(0);
+                const lineBox = $wrap.find('.pfolio-expertise-line-item').get(0);
+                const items = $wrap.find('.pfolio-expertise-main-item');
+
+                if (!line || !lineScale || !lineBox || !items.length) return;
+            
+                const steps = items.length;
+                const lineHeight = line.offsetHeight;
+                const boxHeight = lineBox.offsetHeight;
+                const maxY = lineHeight - boxHeight ;
+                const maxScaleY = maxY / lineHeight;
+            
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: line,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        scrub: true,
+                        onUpdate: self => {
+                            const progress = self.progress;
+                            const boxY = progress * maxY;
+                        
+                            let activeIndex = -1;
+                        
+                            items.each((i, el) => {
+                                const itemTop =
+                                    el.getBoundingClientRect().top -
+                                    line.getBoundingClientRect().top;
+                        
+                                if (boxY >= itemTop) {
+                                    activeIndex = i;
+                                }
+                            });
+                        
+                            // Update step number
+                            const step = Math.min(steps, activeIndex + 1);
+                        
+                            if (step > 0) {
+                                $wrap
+                                    .find('.pfolio-expertise-line-title .txt')
+                                    .text(String(step).padStart(2, '0'));
+                            }
+
+                            items.each((i, el) => {
+                                if (i === activeIndex) {
+                                    $(el).addClass('is-active');
+                                } else {
+                                    $(el).removeClass('is-active');
+                                }
+                            });
+                        }
+                    }
+                })
+                .fromTo(
+                    lineScale,
+                    { scaleY: 0 },
+                    { scaleY: maxScaleY, ease: 'none' },
+                    0
+                )
+                .fromTo(
+                    lineBox,
+                    { y: 0 },
+                    { y: maxY, ease: 'none' },
+                    0
+                );
+            }
+            destroy() {
+                super.destroy();
+            }
+        },
     }
     class PageManager {
         constructor(page) {
