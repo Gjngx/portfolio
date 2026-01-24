@@ -858,16 +858,29 @@
 .pfolio-expertise-main{
     grid-column: 2 / -2;
     grid-row: 2 / 2;
+    @media screen and (max-width: 767px) {
+        grid-column: 1 / -1;
+        padding-inline: var(--padding);
+        overflow: hidden;
+    }
 }
 .pfolio-expertise-main-inner{
     display: flex;
     flex-direction: column;
     row-gap: 12rem;
+    @media screen and (max-width: 767px) {
+        flex-direction: row;
+        column-gap: 0.8rem;
+    }
 }
 .pfolio-expertise-main-item{
     width: 100%;
     display: flex;
     justify-content: flex-start;
+    @media screen and (max-width: 767px) {
+        width: calc(100% - var(--padding));
+        flex: none;
+    }
 }
 .pfolio-expertise-main-item.is-reverse{
     justify-content: flex-end;
@@ -883,6 +896,13 @@
     padding: 2.4rem 3.2rem;
     background-color: #233648;
     transition: border-color 0.4s ease;
+    @media screen and (max-width: 991px) {
+        width: calc(100% / 3 - 1.6rem);
+        padding: 1.6rem 2.4rem;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 }
 .pfolio-expertise-main-item-position-wrap{
     width: 100%;
@@ -937,6 +957,9 @@
     height: 100%;
     display: flex;
     position: relative;
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 .pfolio-expertise-line-scale{
     position: relative;
@@ -970,5 +993,28 @@
 }
 .pfolio-expertise-line-year{
     color: var(--color-text-secondary);
+}
+.pfolio-expertise-main-dots{
+    display: none;
+    @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 0 0 auto;
+        gap: 0.4rem;
+        margin-block-start: 2rem;
+    }
+}
+.pfolio-expertise-main-dot{
+    @media screen and (max-width: 767px) {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: var(--color-border);
+        border-radius: var(--border-radius-circle);
+    }
+}
+.pfolio-expertise-main-dot.active{
+    background-color: var(--color-primary);
 }
 /* Responsive */

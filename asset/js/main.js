@@ -614,6 +614,7 @@ const script = () => {
                         ...Array.from(this.querySelectorAll('.pfolio-about-skills-item')).map(el => {
                             return new FadeIn({ el, allowMobile: true })
                         }),
+                        new FadeIn({ el: this.querySelector('.pfolio-about-skills-dots'), allowMobile: true })
                     ]
                 })
             }
@@ -646,9 +647,9 @@ const script = () => {
             }
             setup() {
                 if (viewport.w <= 767) {
-                    // $(this).find('.pfolio-about-skills-list').addClass('embla__viewport');
-                    // $(this).find('.pfolio-about-skills-list-wrap').addClass('embla__container');
-                    // $(this).find('.pfolio-about-skills-item').addClass('embla__slide');
+                    $(this).find('.pfolio-expertise-main').addClass('embla__viewport');
+                    $(this).find('.pfolio-expertise-main-inner').addClass('embla__container');
+                    $(this).find('.pfolio-expertise-main-item').addClass('embla__slide');
                 }
             }
             animationReveal() {
@@ -658,25 +659,29 @@ const script = () => {
                     scrollTrigger: { trigger: $(this).find('.pfolio-expertise') },
                     allowMobile: true,
                     tweenArr: [
-
+                        new RevealText({ el: this.querySelector('.pfolio-expertise-title .heading'), color: 'white', allowMobile: true, }),
+                        ...Array.from(this.querySelectorAll('.pfolio-expertise-main-item-box')).map(el => {
+                            return new FadeIn({ el, allowMobile: true })
+                        }),
+                        new FadeIn({ el: this.querySelector('.pfolio-expertise-main-dots'), allowMobile: true })
                     ]
                 })
             }
             interact() {
                 if (viewport.w <= 767) {
-                    // this.initSlider();
-                }else{
+                    this.initSlider();
+                } else {
                     this.animateLine();
                 }
             }
             initSlider() {
-                // const slidesInner = $(this).find('.pfolio-about-skills-list').get(0);
-                // const dotsNode = $(this).find('.pfolio-about-skills-dots').get(0);
-                // const dotNodeTemplate = $(this).find('.pfolio-about-skills-dot').get(0);
-                // this.emblaApi = EmblaCarousel(slidesInner);
-                // if (dotsNode && dotNodeTemplate) {
-                //     this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
-                // }
+                const slidesInner = $(this).find('.pfolio-expertise-main').get(0);
+                const dotsNode = $(this).find('.pfolio-expertise-main-dots').get(0);
+                const dotNodeTemplate = $(this).find('.pfolio-expertise-main-dot').get(0);
+                this.emblaApi = EmblaCarousel(slidesInner);
+                if (dotsNode && dotNodeTemplate) {
+                    this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
+                }
             }
             animateLine() {
                 const $wrap = $(this);
@@ -686,13 +691,13 @@ const script = () => {
                 const items = $wrap.find('.pfolio-expertise-main-item');
 
                 if (!line || !lineScale || !lineBox || !items.length) return;
-            
+
                 const steps = items.length;
                 const lineHeight = line.offsetHeight;
                 const boxHeight = lineBox.offsetHeight;
-                const maxY = lineHeight - boxHeight ;
+                const maxY = lineHeight - boxHeight;
                 const maxScaleY = maxY / lineHeight;
-            
+
                 gsap.timeline({
                     scrollTrigger: {
                         trigger: line,
@@ -702,28 +707,24 @@ const script = () => {
                         onUpdate: self => {
                             const progress = self.progress;
                             const boxY = progress * maxY;
-                        
+
+
                             let activeIndex = -1;
-                        
+
+
                             items.each((i, el) => {
                                 const itemTop =
                                     el.getBoundingClientRect().top -
                                     line.getBoundingClientRect().top;
-                        
+
+
                                 if (boxY >= itemTop) {
                                     activeIndex = i;
                                 }
                             });
-                        
-                            // Update step number
-                            const step = Math.min(steps, activeIndex + 1);
-                        
-                            if (step > 0) {
-                                $wrap
-                                    .find('.pfolio-expertise-line-title .txt')
-                                    .text(String(step).padStart(2, '0'));
-                            }
 
+
+                            // Update active state
                             items.each((i, el) => {
                                 if (i === activeIndex) {
                                     $(el).addClass('is-active');
@@ -731,21 +732,33 @@ const script = () => {
                                     $(el).removeClass('is-active');
                                 }
                             });
+
+
+                            // 👉 Update year + expertise từ data-*
+                            if (activeIndex >= 0) {
+                                const $activeItem = $(items[activeIndex]);
+                                const year = $activeItem.data('year'); // vd: 6+
+                                const expertise = $activeItem.data('expertise'); // vd: months / year
+
+
+                                $wrap.find('.pfolio-expertise-line-title .txt').text(year);
+                                $wrap.find('.pfolio-expertise-line-year .txt').text(expertise);
+                            }
                         }
                     }
                 })
-                .fromTo(
-                    lineScale,
-                    { scaleY: 0 },
-                    { scaleY: maxScaleY, ease: 'none' },
-                    0
-                )
-                .fromTo(
-                    lineBox,
-                    { y: 0 },
-                    { y: maxY, ease: 'none' },
-                    0
-                );
+                    .fromTo(
+                        lineScale,
+                        { scaleY: 0 },
+                        { scaleY: maxScaleY, ease: 'none' },
+                        0
+                    )
+                    .fromTo(
+                        lineBox,
+                        { y: 0 },
+                        { y: maxY, ease: 'none' },
+                        0
+                    );
             }
             destroy() {
                 super.destroy();
