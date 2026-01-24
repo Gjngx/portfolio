@@ -933,15 +933,24 @@
 .pfolio-expertise-main-item-position{
     color: var(--color-text);
     transition: color 0.4s ease;
+    @media screen and (max-width: 767px) {
+        color: var(--color-text-primary);
+    }
 }
 .pfolio-expertise-main-item-position-time{
     color: var(--color-text);
     transition: color 0.4s ease;
+    @media screen and (max-width: 767px) {
+        color: var(--color-text-secondary);
+    }
 }
 .pfolio-expertise-main-item-company{
     color: var(--color-text);
     margin-bottom: 2.4rem;
     transition: color 0.4s ease;
+    @media screen and (max-width: 767px) {
+        color: var(--color-text-highlight);
+    }
 }
 .pfolio-expertise-main-item-desc{
     color: var(--color-text);
