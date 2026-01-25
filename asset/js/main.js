@@ -764,6 +764,90 @@ const script = () => {
                 super.destroy();
             }
         },
+        'portfolio-project': class extends TriggerSetup {
+            constructor() {
+                super();
+                this.onTrigger = () => {
+                    this.setup();
+                    this.animationReveal();
+                    this.interact();
+                };
+            }
+            setup() {
+                if (viewport.w <= 767) {
+                    $(this).find('.pfolio-project-list').addClass('embla__viewport');
+                    $(this).find('.pfolio-project-list-wrap').addClass('embla__container');
+                    $(this).find('.pfolio-project-list-item').addClass('embla__slide');
+                }
+            }
+            animationReveal() {
+
+                new MasterTimeline({
+                    triggerInit: this,
+                    scrollTrigger: { trigger: $(this).find('.pfolio-project') },
+                    allowMobile: true,
+                    tweenArr: [
+                        new RevealText({ el: this.querySelector('.pfolio-project-title .heading'), color: 'white', allowMobile: true, }),
+                        new RevealText({ el: this.querySelector('.pfolio-project-desc .txt'), color: '#94a3b8', allowMobile: true, }),
+                        ...Array.from(this.querySelectorAll('.pfolio-project-list-item')).map(el => {
+                            return new FadeIn({ el, allowMobile: true })
+                        }),
+                        new FadeIn({ el: this.querySelector('.pfolio-project-list-dots'), allowMobile: true }),
+                    ]
+                })
+            }
+            interact() {
+                if (viewport.w <= 767) {
+                    this.initSlider();
+                }
+            }
+            initSlider() {
+                const slidesInner = $(this).find('.pfolio-project-list').get(0);
+                const dotsNode = $(this).find('.pfolio-project-list-dots').get(0);
+                const dotNodeTemplate = $(this).find('.pfolio-project-list-dot').get(0);
+                this.emblaApi = EmblaCarousel(slidesInner);
+                if (dotsNode && dotNodeTemplate) {
+                    this.dotButtons = new DotButtons(this.emblaApi, dotsNode, dotNodeTemplate);
+                }
+            }
+            destroy() {
+                super.destroy();
+            }
+        },
+        'portfolio-contact': class extends TriggerSetup {
+            constructor() {
+                super();
+                this.onTrigger = () => {
+                    this.setup();
+                    this.animationReveal();
+                    this.interact();
+                };
+            }
+            setup() {
+            }
+            animationReveal() {
+
+                new MasterTimeline({
+                    triggerInit: this,
+                    scrollTrigger: { trigger: $(this).find('.pfolio-contact') },
+                    allowMobile: true,
+                    tweenArr: [
+                        new RevealText({ el: this.querySelector('.pfolio-contact-title .heading'), color: 'white', allowMobile: true, }),
+                        new RevealText({ el: this.querySelector('.pfolio-contact-desc .txt'), color: '#94a3b8', allowMobile: true, }),
+                        new RevealText({ el: this.querySelector('.contact-content-title-1 .txt'), color: 'white', allowMobile: true, }),
+                        new RevealText({ el: this.querySelector('.contact-content-title-2 .txt'), color: 'white', allowMobile: true, }),
+                        ...Array.from(this.querySelectorAll('.pfolio-contact-content-item')).map(el => {
+                            return new FadeIn({ el, allowMobile: true })
+                        }),
+                    ]
+                })
+            }
+            interact() {
+            }
+            destroy() {
+                super.destroy();
+            }
+        }
     }
     class PageManager {
         constructor(page) {
@@ -816,10 +900,11 @@ const script = () => {
 // window.onload = script
 async function loadLang() {
     const lang = localStorage.getItem('lang') || 'vi';
-
+    console.log('lang:', lang);
 
     try {
         const res = await fetch(`./asset/data/i18n/${lang}.json`);
+        console.log('res:', res);
         if (!res.ok) throw new Error('Cannot load lang file');
         return await res.json();
     } catch (err) {
@@ -857,12 +942,12 @@ function bindLangSwitch() {
 }
 
 async function init() {
-    await initLang();
+    // await initLang();
 
-    applyLang();
+    // applyLang();
     // bindLangSwitch();
 
-    await new Promise(requestAnimationFrame);
+    // await new Promise(requestAnimationFrame);
 
     script();
 
