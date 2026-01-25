@@ -1,4 +1,3 @@
-
 const script = () => {
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.defaults({
@@ -660,10 +659,11 @@ const script = () => {
                     allowMobile: true,
                     tweenArr: [
                         new RevealText({ el: this.querySelector('.pfolio-expertise-title .heading'), color: 'white', allowMobile: true, }),
+                        new RevealText({ el: this.querySelector('.pfolio-expertise-desc .txt'), color: '#94a3b8', allowMobile: true, }),
                         ...Array.from(this.querySelectorAll('.pfolio-expertise-main-item-box')).map(el => {
                             return new FadeIn({ el, allowMobile: true })
                         }),
-                        new FadeIn({ el: this.querySelector('.pfolio-expertise-main-dots'), allowMobile: true })
+                        new FadeIn({ el: this.querySelector('.pfolio-expertise-main-dots'), allowMobile: true }),
                     ]
                 })
             }
@@ -813,4 +813,60 @@ const script = () => {
     refreshOnBreakpoint();
     scrollTop(() => pageConfig[pageName] && (registry[pageName] = new PageManager(pageConfig[pageName])));
 }
-window.onload = script
+// window.onload = script
+async function loadLang() {
+    const lang = localStorage.getItem('lang') || 'vi';
+
+
+    try {
+        const res = await fetch(`./asset/data/i18n/${lang}.json`);
+        if (!res.ok) throw new Error('Cannot load lang file');
+        return await res.json();
+    } catch (err) {
+        console.error('LANG LOAD ERROR:', err);
+        return null;
+    }
+}
+
+async function initLang() {
+    window.LANG_DATA = await loadLang();
+}
+function applyLang() {
+    if (!window.LANG_DATA) return;
+
+
+    const hero = window.LANG_DATA.portfolio?.hero;
+    if (!hero) return;
+
+
+    const title = document.querySelector('.pfolio-hero-title .heading');
+    const desc = document.querySelector('.pfolio-hero-description .txt');
+
+
+    title && (title.textContent = hero.title || '');
+    desc && (desc.textContent = hero.desc || '');
+}
+
+function bindLangSwitch() {
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            localStorage.setItem('lang', btn.dataset.lang);
+            location.reload();
+        });
+    });
+}
+
+async function init() {
+    await initLang();
+
+    applyLang();
+    // bindLangSwitch();
+
+    await new Promise(requestAnimationFrame);
+
+    script();
+
+    ScrollTrigger.refresh(true);
+}
+
+init();
